@@ -9,7 +9,7 @@ function Layout({ cartItems }) {
 			<div className='layout'>
 				<Nav cartItems={cartItems} />
 				<Outlet />
-				<Footer/>
+				<Footer />
 			</div>
 		</>
 	)

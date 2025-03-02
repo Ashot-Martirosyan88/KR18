@@ -5,6 +5,7 @@ import Home from './components/Home/Home'
 import Products from './components/Products/Products'
 import Product from './components/Product/Product'
 import Cart from './components/Cart/Cart'
+import Todos from './components/Todos/Todos'
 
 import './App.css'
 
@@ -68,6 +69,7 @@ function App() {
 			<Routes>
 				<Route path='/' element={<Layout cartItems={cartItems} />}>
 					<Route index element={<Home />} />
+					<Route path='/todos' element={<Todos />} />
 					<Route
 						path='/products'
 						element={<Products addToCart={addToCart} />}

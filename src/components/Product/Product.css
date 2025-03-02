@@ -201,7 +201,6 @@
   align-items: center;
 }
 
-/* Loading animation for the loaders */
 @keyframes shimmer {
   0% {
     background-position: -200% 0;
@@ -211,7 +210,6 @@
   }
 }
 
-/* Add shimmer effect to loader backgrounds */
 .product-skeleton rect {
   animation: shimmer 1.5s infinite linear;
   background: linear-gradient(90deg, 
