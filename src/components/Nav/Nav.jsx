@@ -3,9 +3,13 @@ import { NavLink } from 'react-router-dom'
 import navSchema from '../../../public/assets/schema/navSchema'
 import { GoMoveToStart, GoMoveToEnd } from 'react-icons/go'
 import { LuListTodo } from 'react-icons/lu'
+import { SiShopify } from 'react-icons/si'
+import { TiShoppingCart } from 'react-icons/ti'
 import './Nav.css'
 
-function Nav() {
+function Nav({ cartItems }) {
+	const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0)
+
 	return (
 		<>
 			<nav className='nav'>
@@ -44,6 +48,13 @@ function Nav() {
 						<div className='nav-links'>
 							<NavLink to={'/todos'} className='nav-link'>
 								<LuListTodo />
+							</NavLink>
+							<NavLink to='/products' className='nav-link'>
+								<SiShopify />
+							</NavLink>
+							<NavLink to='/cart' className='nav-link'>
+								<TiShoppingCart />
+								<sub>{totalItems}</sub>
 							</NavLink>
 						</div>
 						<div className='nav-btns'></div>
