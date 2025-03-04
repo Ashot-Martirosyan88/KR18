@@ -11,11 +11,7 @@ function Footer() {
 			<div className='footer-container'>
 				<div className='footer-logo'>
 					<NavLink to='/'>
-						<img
-							src={'../../../public/assets/images/logo.png'}
-							alt='Logo'
-							width={100}
-						/>
+						<img src='/assets/images/logo.png' alt='Logo' width={100} />
 					</NavLink>
 				</div>
 				<nav className='footer-nav'>

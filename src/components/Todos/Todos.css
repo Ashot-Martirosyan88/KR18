@@ -15,8 +15,11 @@
   --border-color: #ddd;
   --shadow-color: rgba(0, 0, 0, 0.1);
   --transition-speed: 0.3s;
+  --border-radius: 8px;
+  --focus-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
 }
 
+/* Base styles */
 .todo-app {
   max-width: 600px;
   margin: 0 auto;
@@ -24,11 +27,12 @@
   font-family: 'Arial', sans-serif;
   color: var(--text-color);
   background-color: white;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   box-shadow: 0 5px 15px var(--shadow-color);
   transition: transform var(--transition-speed);
 }
 
+/* Title */
 .todo-title {
   text-align: center;
   color: var(--text-color);
@@ -36,7 +40,8 @@
   position: relative;
   font-size: 2rem;
   font-weight: bold;
-  animation: fadeInDown 0.8s ease-out;
+  -webkit-animation: fadeInDown 0.8s ease-out;
+          animation: fadeInDown 0.8s ease-out;
 }
 
 .todo-title::after {
@@ -49,14 +54,17 @@
   left: 50%;
   transform: translateX(-50%);
   border-radius: 2px;
-  animation: expandWidth 1s ease-out forwards;
+  -webkit-animation: expandWidth 1s ease-out forwards;
+          animation: expandWidth 1s ease-out forwards;
 }
 
+/* Form */
 .todo-form {
   display: flex;
   margin-bottom: 30px;
   gap: 10px;
-  animation: fadeIn 0.8s ease-out;
+  -webkit-animation: fadeIn 0.8s ease-out;
+          animation: fadeIn 0.8s ease-out;
 }
 
 .task-input {
@@ -71,17 +79,23 @@
 .task-input:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+  box-shadow: var(--focus-shadow);
 }
 
 .error-message {
   color: var(--danger-color);
   font-size: 14px;
   margin-top: 5px;
-  animation: shake 0.5s ease-in-out;
+  -webkit-animation: shake 0.5s ease-in-out;
+          animation: shake 0.5s ease-in-out;
 }
 
-.submit-btn, .delete-btn, .edit-btn, .save-btn, .cancel-btn {
+/* Buttons */
+.submit-btn, 
+.delete-btn, 
+.edit-btn, 
+.save-btn, 
+.cancel-btn {
   padding: 12px 18px;
   border: none;
   border-radius: 4px;
@@ -112,9 +126,11 @@
 
 .loading-indicator {
   margin: 30px 0;
-  animation: pulse 1.5s infinite;
+  -webkit-animation: pulse 1.5s infinite;
+          animation: pulse 1.5s infinite;
 }
 
+/* Todo List */
 .todo-list {
   display: flex;
   flex-direction: column;
@@ -128,11 +144,12 @@
   padding: 15px 20px;
   width: 100%;
   background-color: var(--background-color);
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   box-shadow: 0 2px 5px var(--shadow-color);
   transition: all var(--transition-speed);
   transform-origin: center;
-  animation: slideIn 0.3s ease-out;
+  -webkit-animation: slideIn 0.3s ease-out;
+          animation: slideIn 0.3s ease-out;
 }
 
 .todo-item:hover {
@@ -218,8 +235,9 @@
   border: 2px solid var(--primary-color);
   border-radius: 4px;
   font-size: 16px;
-  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
-  animation: fadeIn 0.3s;
+  box-shadow: var(--focus-shadow);
+  -webkit-animation: fadeIn 0.3s;
+          animation: fadeIn 0.3s;
 }
 
 .empty-list {
@@ -227,17 +245,22 @@
   color: var(--text-light);
   padding: 30px;
   background-color: var(--background-color);
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   font-style: italic;
-  animation: fadeIn 0.8s;
+  -webkit-animation: fadeIn 0.8s;
+          animation: fadeIn 0.8s;
 }
 
+/* Custom Checkbox */
 .checkbox-container {
   display: block;
   position: relative;
   padding-left: 35px;
   cursor: pointer;
   user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .checkbox-container input {
@@ -286,12 +309,37 @@
 
 .checkbox-container input:checked ~ .checkmark:after {
   display: block;
-  animation: checkmark 0.2s ease-in-out;
+  -webkit-animation: checkmark 0.2s ease-in-out;
+          animation: checkmark 0.2s ease-in-out;
 }
+
+/* Animations */
+@-webkit-keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes slideIn {
   from {
     opacity: 0;
     transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
   to {
     opacity: 1;
@@ -310,14 +358,37 @@
   }
 }
 
+@-webkit-keyframes expandWidth {
+  from { width: 0; }
+  to { width: 60px; }
+}
+
 @keyframes expandWidth {
   from { width: 0; }
   to { width: 60px; }
 }
 
+@-webkit-keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+@-webkit-keyframes checkmark {
+  0% {
+    height: 0;
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    height: 11px;
+    width: 6px;
+    opacity: 1;
+  }
 }
 
 @keyframes checkmark {
@@ -333,10 +404,22 @@
   }
 }
 
+@-webkit-keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
   10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
   20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+@-webkit-keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
 }
 
 @keyframes pulse {
@@ -346,7 +429,15 @@
 }
 
 .todo-item.deleting {
-  animation: slideOut 0.3s ease-in forwards;
+  -webkit-animation: slideOut 0.3s ease-in forwards;
+          animation: slideOut 0.3s ease-in forwards;
+}
+
+@-webkit-keyframes slideOut {
+  to {
+    opacity: 0;
+    transform: translateX(50px);
+  }
 }
 
 @keyframes slideOut {
@@ -356,6 +447,7 @@
   }
 }
 
+/* Media Queries - Tablet */
 @media (max-width: 768px) {
   .todo-app {
     padding: 15px;
@@ -381,23 +473,31 @@
     gap: 15px;
   }
   
-  .todo-content {
+  .todo-content,
+  .todo-actions {
     width: 100%;
   }
   
   .todo-actions {
-    width: 100%;
     justify-content: space-between;
   }
   
-  .edit-btn, .delete-btn, .save-btn, .cancel-btn {
+  .edit-btn, 
+  .delete-btn, 
+  .save-btn, 
+  .cancel-btn {
     padding: 10px 15px;
     flex: 1;
     font-size: 13px;
   }
 }
 
+/* Media Queries - Mobile */
 @media (max-width: 480px) {
+  .todo-app {
+    padding: 12px;
+  }
+  
   .todo-title {
     font-size: 1.5rem;
   }
@@ -406,11 +506,9 @@
     padding: 12px 15px;
   }
   
-  .todo-text {
-    font-size: 14px;
-  }
-  
-  .task-input, .edit-input {
+  .todo-text,
+  .task-input, 
+  .edit-input {
     font-size: 14px;
   }
   
@@ -419,7 +517,10 @@
     gap: 5px;
   }
   
-  .edit-btn, .delete-btn, .save-btn, .cancel-btn {
+  .edit-btn, 
+  .delete-btn, 
+  .save-btn, 
+  .cancel-btn {
     padding: 8px 12px;
     font-size: 12px;
   }

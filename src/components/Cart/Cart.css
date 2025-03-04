@@ -49,7 +49,8 @@
 
 .cart-item {
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  min-width: 852px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 1rem;
   padding: 1rem;
   border-radius: 8px;
@@ -84,6 +85,7 @@
   text-decoration: none;
   color: inherit;
   transition: all 0.3s ease;
+  grid-column: span 1;
 }
 
 .cart-item-link:hover {
@@ -124,11 +126,19 @@
   color: #333;
   margin-bottom: 0.5rem;
   transition: all 0.3s ease;
+  text-align: center;
+  grid-column: span 1;
 }
 
 .cart-item:hover .cart-item-price {
   color: #007bff;
   animation: bounce 0.6s;
+}
+
+.cart-item-single-price {
+  font-size: 1rem;
+  color: #555;
+  text-align: center;
 }
 
 @keyframes bounce {
@@ -149,6 +159,7 @@
   justify-content: center;
   gap: 0.5rem;
   margin: 0.5rem 0;
+  grid-column: span 1;
 }
 
 .quantity-btn {
@@ -185,6 +196,15 @@
   animation: fadeIn 0.5s;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .quantity-count:hover {
   color: #007bff;
   transform: scale(1.2);
@@ -202,6 +222,8 @@
   margin-top: 0.5rem;
   position: relative;
   overflow: hidden;
+  grid-column: span 1;
+  justify-self: center;
 }
 
 .remove-item-btn:hover {
@@ -252,6 +274,7 @@
   color: #333;
   transition: all 0.3s ease;
   position: relative;
+  margin: 0;
 }
 
 .total-price::after {
@@ -317,15 +340,25 @@
   .cart-item {
     grid-template-columns: 1fr;
     text-align: center;
+    gap: 0.5rem;
+  }
+  
+  .cart-item-link,
+  .cart-item-price,
+  .quantity-controls,
+  .remove-item-btn {
+    grid-column: 1;
+    margin: 0.5rem 0;
   }
   
   .cart-item-link {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
   
   .cart-item-title {
     -webkit-line-clamp: 2;
-    height: 2.4em;
+    height: auto;
+    max-height: 2.4em;
   }
   
   .cart-summary {
@@ -334,5 +367,31 @@
   
   .total-price {
     font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cart-container {
+    margin: 0.5rem;
+    padding: 0.75rem;
+  }
+  
+  .cart-item {
+    padding: 0.75rem;
+  }
+  
+  .cart-item-image {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .quantity-btn {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .remove-item-btn {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
   }
 }

@@ -49,6 +49,7 @@
 .product-item {
   display: flex;
   flex-direction: column;
+  min-width: 260px;
   align-items: center;
   padding: 1.5rem;
   border-radius: 8px;

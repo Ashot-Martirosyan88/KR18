@@ -21,18 +21,21 @@ function Cart(props) {
 										<h2 className='cart-item-title'>{item.title}</h2>
 										<img
 											src={item.image}
-											alt=''
-											width={100}
+											alt={item.title}
 											className='cart-item-image'
 										/>
+										<span className='cart-item-single-price'>
+											${item.price}
+										</span>
 									</NavLink>
-									<p className='cart-item-price'>
-										${itemTotalPrice} +${item.price}
-									</p>
+
+									<p className='cart-item-price'>Total: ${itemTotalPrice}</p>
+
 									<div className='quantity-controls'>
 										<button
 											onClick={() => props.decreaseQuantity(item.id)}
 											className='quantity-btn'
+											aria-label='Decrease quantity'
 										>
 											-
 										</button>
@@ -40,10 +43,12 @@ function Cart(props) {
 										<button
 											onClick={() => props.increaseQuantity(item.id)}
 											className='quantity-btn'
+											aria-label='Increase quantity'
 										>
 											+
 										</button>
 									</div>
+
 									<button
 										onClick={() => props.removeFromCart(item.id)}
 										className='remove-item-btn'
